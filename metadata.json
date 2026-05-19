@@ -1,0 +1,6 @@
+{
+  "name": "Task Sketchbook",
+  "description": "A minimalist, sketch-style checklist and planner mimicking a physical journal with soft pastels, handwritten fonts, and guide for iOS desktop install and GitHub Pages deployment.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

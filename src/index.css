@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Quicksand:wght@300..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bricolage Grotesque", Arial, sans-serif;
+  --font-sans: "Quicksand", sans-serif;
+  
+  --color-sketch-surface: #fbf9f1;
+  --color-sketch-surface-dark: #eeebe0;
+  --color-sketch-blue-bg: #e6eefd;
+  --color-sketch-blue-border: #adbdd8;
+  --color-sketch-blue-text: #3a475d;
+  
+  --color-sketch-pink-bg: #fdf0f4;
+  --color-sketch-pink-border: #e8c6ce;
+  --color-sketch-pink-text: #775e69;
+  
+  --color-sketch-green-bg: #f4fae6;
+  --color-sketch-green-border: #cedeaf;
+  --color-sketch-green-text: #4a5d1c;
+
+  --color-sketch-yellow-bg: #fffdf0;
+  --color-sketch-yellow-border: #ece1b8;
+  --color-sketch-yellow-text: #695e34;
+  
+  --color-sketch-pencil: #44474d;
+}
+
+/* Custom styles for the handdrawn analogue look */
+@layer utilities {
+  .sketch-shadow-sm {
+    box-shadow: 1.5px 1.5px 0px 0px rgba(68, 71, 77, 0.9);
+  }
+  .sketch-shadow {
+    box-shadow: 2px 2px 0px 0px rgba(68, 71, 77, 0.95);
+  }
+  .sketch-shadow-lg {
+    box-shadow: 3.5px 3.5px 0px 0px rgba(68, 71, 77, 0.98);
+  }
+  .sketch-border {
+    border: 1.5px solid rgba(68, 71, 77, 0.85);
+  }
+  .sketch-border-thick {
+    border: 2.2px solid rgba(68, 71, 77, 0.95);
+  }
+}
+
+/* Custom Notebook grid lines & dots */
+.notebook-lines {
+  background-color: #fbf9f1;
+  background-image: 
+    /* Horizontal lines resembling notebook margins */
+    linear-gradient(rgba(68, 71, 77, 0.06) 1px, transparent 1px);
+  background-size: 100% 28px;
+  background-position: 0 10px;
+}
+
+.notebook-dots {
+  background-color: #fbf9f1;
+  background-image: 
+    /* Light dots repeating */
+    radial-gradient(rgba(68, 71, 77, 0.12) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+  background-position: 14px 14px;
+}
+
+/* Notebook Binder Wire loops decoration at top */
+.binder-loops {
+  position: relative;
+}
+.binder-loops::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background-image: radial-gradient(circle, #dcdad2 4px, transparent 5px);
+  background-size: 20px 100%;
+}
+
+/* Highlight style resembling watercolor/marker text highlights */
+.marker-highlight {
+  background: linear-gradient(100deg, rgba(252, 219, 232, 0.6) 0%, rgba(252, 219, 232, 0.9) 100%);
+  border-radius: 4px;
+}
+
+.marker-highlight-green {
+  background: linear-gradient(100deg, rgba(212, 236, 155, 0.5) 0%, rgba(212, 236, 155, 0.8) 100%);
+  border-radius: 4px;
+}
+
+/* Sketchy handdrawn checkbox animation */
+@keyframes scribble-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-scribble {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: scribble-draw 0.35s ease-out forwards;
+}
+
+/* Handwritten struck through line animation */
+.scribble-strike {
+  position: relative;
+}
+.scribble-strike::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 50%;
+  height: 2px;
+  background: rgba(68, 71, 77, 0.6);
+  transform: rotate(-1.2deg);
+  border-radius: 40% 60% 50% 50% / 40% 30% 60% 50%;
+  animation: strike-expand 0.25s ease-out forwards;
+  transform-origin: left;
+}
+
+@keyframes strike-expand {
+  from {
+    transform: scaleX(0) rotate(-1.2deg);
+  }
+  to {
+    transform: scaleX(1) rotate(-1.2deg);
+  }
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
